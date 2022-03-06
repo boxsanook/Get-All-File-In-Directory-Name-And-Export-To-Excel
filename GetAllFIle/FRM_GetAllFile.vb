@@ -19,15 +19,15 @@ Public Class FRM_GetAllFile
         ''''https://docs.microsoft.com/en-us/dotnet/api/system.io.fileinfo?view=net-6.0
         Dim strFileSize As String = ""
         Dim di As New IO.DirectoryInfo(FolderName)
-        Dim aryFi As IO.FileInfo() = di.GetFiles("*.*", SearchOption.AllDirectories)
-        Dim fi As IO.FileInfo
+        Dim GetAllFiles As IO.FileInfo() = di.GetFiles("*.*", SearchOption.AllDirectories)
+        Dim xFileInfo As IO.FileInfo
         TestOrder()
         ClearDataGrid()
         Dim id As Integer = 0
-        For Each fi In aryFi
+        For Each xFileInfo In GetAllFiles
             id = id + 1
-            strFileSize = (Math.Round(fi.Length / 1024)).ToString()
-            FileDirectory.Rows.Add(id, fi.DirectoryName, fi.FullName, fi.Name, strFileSize, fi.Extension, fi.LastAccessTime, (fi.Attributes.ReadOnly = True).ToString)
+            strFileSize = (Math.Round(xFileInfo.Length / 1024)).ToString()
+            FileDirectory.Rows.Add(id, xFileInfo.DirectoryName, xFileInfo.FullName, xFileInfo.Name, strFileSize, xFileInfo.Extension, xFileInfo.LastAccessTime, (xFileInfo.Attributes.ReadOnly = True).ToString)
 
             'Console.WriteLine("File Name: {0}", fi.Name)
             'Console.WriteLine("File Full Name: {0}", fi.FullName)
