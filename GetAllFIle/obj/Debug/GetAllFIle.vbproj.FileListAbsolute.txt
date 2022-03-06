@@ -1,0 +1,13 @@
+D:\IT\Project\BAC\Project\GetAllFIle\GetAllFIle\bin\Debug\GetAllFIle.exe.config
+D:\IT\Project\BAC\Project\GetAllFIle\GetAllFIle\bin\Debug\GetAllFIle.exe
+D:\IT\Project\BAC\Project\GetAllFIle\GetAllFIle\bin\Debug\GetAllFIle.pdb
+D:\IT\Project\BAC\Project\GetAllFIle\GetAllFIle\bin\Debug\GetAllFIle.xml
+D:\IT\Project\BAC\Project\GetAllFIle\GetAllFIle\obj\Debug\GetAllFIle.vbprojResolveAssemblyReference.cache
+D:\IT\Project\BAC\Project\GetAllFIle\GetAllFIle\obj\Debug\GetAllFIle.Resources.resources
+D:\IT\Project\BAC\Project\GetAllFIle\GetAllFIle\obj\Debug\GetAllFIle.vbproj.GenerateResource.Cache
+D:\IT\Project\BAC\Project\GetAllFIle\GetAllFIle\obj\Debug\GetAllFIle.exe
+D:\IT\Project\BAC\Project\GetAllFIle\GetAllFIle\obj\Debug\GetAllFIle.xml
+D:\IT\Project\BAC\Project\GetAllFIle\GetAllFIle\obj\Debug\GetAllFIle.pdb
+D:\IT\Project\BAC\Project\GetAllFIle\GetAllFIle\bin\Debug\DocumentFormat.OpenXml.dll
+D:\IT\Project\BAC\Project\GetAllFIle\GetAllFIle\bin\Debug\DocumentFormat.OpenXml.xml
+D:\IT\Project\BAC\Project\GetAllFIle\GetAllFIle\obj\Debug\GetAllFIle.FRM_GetAllFile.resources
