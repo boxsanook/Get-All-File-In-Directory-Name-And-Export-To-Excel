@@ -1,13 +1,17 @@
 ﻿Imports System.IO
 
 Public Class FRM_GetAllFile
+  
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+     Try
 
-        If (FolderBrowserDialog1.ShowDialog() = DialogResult.OK) Then
-            TextBox1.Text = FolderBrowserDialog1.SelectedPath
-            Getall(TextBox1.Text)
-        End If
+            If (FolderBrowserDialog1.ShowDialog() = DialogResult.OK) Then
+                TextBox1.Text = FolderBrowserDialog1.SelectedPath
+                Getall(TextBox1.Text)
+            End If
+            Catch
 
+        End Try
 
         'Dim baseDirectory As String = "F:\Document Control\"
         'Dim allFiles As String() = Directory.GetFiles(baseDirectory, "*.*", SearchOption.AllDirectories)
@@ -16,6 +20,7 @@ Public Class FRM_GetAllFile
         'Next
     End Sub
     Public Sub Getall(FolderName As String)
+           
         ''''https://docs.microsoft.com/en-us/dotnet/api/system.io.fileinfo?view=net-6.0
         Dim strFileSize As String = ""
         Dim di As New IO.DirectoryInfo(FolderName)
@@ -26,7 +31,7 @@ Public Class FRM_GetAllFile
         Dim id As Integer = 0
         For Each xFileInfo In GetAllFiles
             id = id + 1
-            strFileSize = (Math.Round(xFileInfo.Length / 1024)).ToString()
+        strFileSize = FormatBytes(  xFileInfo.Length  )
             FileDirectory.Rows.Add(id, xFileInfo.DirectoryName, xFileInfo.FullName, xFileInfo.Name, strFileSize, xFileInfo.Extension, xFileInfo.LastAccessTime, (xFileInfo.Attributes.ReadOnly = True).ToString)
 
             'Console.WriteLine("File Name: {0}", fi.Name)
@@ -45,6 +50,35 @@ Public Class FRM_GetAllFile
         '///  Button2 Edit File
 
     End Sub
+
+Dim DoubleBytes As Double
+Public Function FormatBytes(ByVal BytesCaller As ULong) As String
+
+    Try
+        Select Case BytesCaller
+            Case Is >= 1099511627776
+                DoubleBytes = CDbl(BytesCaller / 1099511627776) 'TB
+                Return FormatNumber(DoubleBytes, 2) & " TB"
+            Case 1073741824 To 1099511627775
+                DoubleBytes = CDbl(BytesCaller / 1073741824) 'GB
+                Return FormatNumber(DoubleBytes, 2) & " GB"
+            Case 1048576 To 1073741823
+                DoubleBytes = CDbl(BytesCaller / 1048576) 'MB
+                Return FormatNumber(DoubleBytes, 2) & " MB"
+            Case 1024 To 1048575
+                DoubleBytes = CDbl(BytesCaller / 1024) 'KB
+                Return FormatNumber(DoubleBytes, 2) & " KB"
+            Case 0 To 1023
+                DoubleBytes = BytesCaller ' bytes
+                Return FormatNumber(DoubleBytes, 2) & " bytes"
+            Case Else
+                Return ""
+        End Select
+    Catch
+        Return ""
+    End Try
+
+End Function
     Dim FileDirectory As New DataTable
     Public Sub TestOrder()
         FileDirectory = New DataTable
@@ -52,7 +86,7 @@ Public Class FRM_GetAllFile
         FileDirectory.Columns.Add(New DataColumn("DirectoryName", GetType(String)))
         FileDirectory.Columns.Add(New DataColumn("Full Directory FileName", GetType(String)))
         FileDirectory.Columns.Add(New DataColumn("File Name", GetType(String)))
-        FileDirectory.Columns.Add(New DataColumn("File Size (KB)", GetType(Decimal)))
+    FileDirectory.Columns.Add(New DataColumn("File Size ", GetType(String)))
         FileDirectory.Columns.Add(New DataColumn("File Extension", GetType(String)))
         FileDirectory.Columns.Add(New DataColumn("Last Accessed", GetType(String)))
         FileDirectory.Columns.Add(New DataColumn("Read Only", GetType(String)))
